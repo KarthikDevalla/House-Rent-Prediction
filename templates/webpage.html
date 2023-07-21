@@ -1,1 +1,125 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Price Prediction</title>
+        <style>
+            body {
+                text-align: center; 
+            }
+    
+            form {
+                margin: 0 auto; 
+                width: 300px; 
+                text-align: left; 
+            }
+    
+            form label {
+                display: block;
+                margin-bottom: 5px;
+                text-align: left;
+            }
+    
+            form input, form select {
+                width: 100%;
+                margin-bottom: 10px;
+            }
 
+            #result {
+            font-weight: bold;
+            font-size: 24px;
+            margin-top: 20px;
+            }
+        </style>
+    </head>
+    <body>
+    <h1>House-Rent Predictor</h1>
+    <form id="prediction-form">
+        <label for="bedroom">Bedroom:</label>
+        <input type="number" id="bedroom" name="bedroom" required>
+        <br>
+        <br>
+        <label for="layout_type">Layout Type:</label>
+        <select id="layout_type" name="layout_type" required>
+            <option value="BHK">BHK</option>
+            <option value="RK">RK</option>
+        </select>
+        <br>
+        <br>
+        <label for="property_type">Property Type:</label>
+        <select id="property_type" name="property_type" required>
+            <option value="Apartment">Apartment</option>
+            <option value="Independent Floor">Independent Floor</option>
+            <option value="Independent House">Independent House</option>
+            <option value="Studio Apartment">Studio Apartment</option>
+            <option value="Villa">Villa</option>
+            <option value="Penthouse">Penthouse</option>
+        </select>
+        <br>
+        <br>
+        <label for="area">Area:</label>
+        <input type="number" id="area" name="area" required>
+        <br>
+        <br>
+        <label for="furnish_type">Furnish Type:</label>
+        <select id="furnish_type" name="furnish_type" required>
+            <option value="Furnished">Furnished</option>
+            <option value="Semi-Furnished">Semi-Furnished</option>
+            <option value="Unfurnished">Unfurnished</option>
+        </select>
+        <br>
+        <br>
+        <label for="bathroom">Bathroom:</label>
+        <input type="number" id="bathroom" name="bathroom" required>
+        <br>
+        <br>
+        <label for="city">City:</label>
+        <select id="city" name="city" required>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Bangalore">Bangalore</option>
+            <option value="Ahmedabad">Ahmedabad</option>
+            <option value="Pune">Pune</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Kolkata">Kolkata</option>
+            <option value="Chennai">Chennai</option>
+        </select>
+        <br>
+        <br>
+        <input type="submit" value="Predict">
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        const form = document.getElementById('prediction-form');
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const formData = new FormData(form);
+            const data = {};
+
+            formData.forEach((value, key) => data[key] = value);
+
+            try {
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ data }) 
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    document.getElementById('result').innerText = `Predicted Price: ${result} INR`;
+                } else {
+                    document.getElementById('result').innerText = 'Error occurred during prediction.';
+                }
+            } catch (error) {
+                console.error('Error occurred:', error);
+                document.getElementById('result').innerText = 'Error occurred during prediction.';
+            }
+        });
+    </script>
+</body>
+</html>
