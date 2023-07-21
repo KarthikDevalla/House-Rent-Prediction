@@ -8,4 +8,4 @@ This repository contains a machine learning project for predicting house rents i
 
 ## Prediction API using FastAPI
 
-The 'main.py' file contains the FastAPI code for the prediction API. This API allows users to make rent predictions by sending a POST request with relevant house features as input. The API will respond with the predicted rent for the provided feature set.
+The `main.py` file contains the FastAPI code for the prediction API. This API allows users to make rent predictions by sending a POST request with relevant house features as input. The API will respond with the predicted rent for the provided feature set.
