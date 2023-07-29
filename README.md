@@ -2,7 +2,6 @@
 
 [![Apache License 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
-You can use this badge to indicate that your software is licensed under the Apache License 2.0. Just include the badge in your project's README or documentation to inform others about the licensing terms of your software.
 ## Introduction
 
 This repository contains a machine learning project for predicting house rents in major states of India. The goal is to build a robust and accurate predictive model that can estimate house rents based on various features like __Location, Property Type, Layout Type, Furnish Type, Number of Bedrooms and Bathrooms, and Area__. In addition to the predictive model, it is integrated with FastAPI to create a RESTful API that allows users to make real-time rent predictions using HTTP requests. The goal is to build a user-friendly web API that can serve predictions based on various house features, making it convenient for users and real estate agents to access rental estimates.
