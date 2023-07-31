@@ -12,3 +12,9 @@ The `main.py` file contains the FastAPI code for the prediction API. This API al
 
 
 ## Usage
+
+This is a sample picture of how the application works:
+<br>
+
+![image](hrent.png)
+
